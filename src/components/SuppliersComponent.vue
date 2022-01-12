@@ -5,7 +5,7 @@
     </button>
 
     <div class="form-popup p-4" id="popupDiv">
-      <form id="addForm">
+      <form id="addForm" @submit.prevent="confirmForm">
         <div>
           <span class="h4">Supplier</span>
           <button
@@ -43,6 +43,7 @@
             placeholder="Eric Doe"
             aria-label="Representative Name"
             aria-describedby="basic-addon1"
+				required
           />
         </div>
         <div class="input-group mb-3">
@@ -53,9 +54,10 @@
             type="text"
             v-model="email"
             class="form-control"
-            placeholder="erik928331@protonmail.com"
+            placeholder="erik928331@emailaddr.com"
             aria-label="Email"
             aria-describedby="basic-addon1"
+				required
           />
         </div>
         <div class="input-group mb-3">
@@ -69,6 +71,7 @@
             placeholder="000-0000-0000"
             aria-label="Phone Number"
             aria-describedby="basic-addon1"
+				required
           />
         </div>
         <div class="text-center gx-5">
@@ -76,8 +79,7 @@
             <div class="row gx-1">
               <div class="col">
                 <button
-                  type="button"
-                  v-on:click="confirmForm()"
+                  type="submit"  
                   class="btn btn-secondary"
                 >
                   Confirm
