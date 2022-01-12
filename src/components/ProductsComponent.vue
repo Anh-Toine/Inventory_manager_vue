@@ -3,7 +3,7 @@
     <button class="btn btn-secondary" v-on:click="showForm('post')">Add new product</button>
 
     <div class="form-popup p-4" id="popupDiv">
-      <form id="addForm">
+      <form id="addForm" @submit.prevent="confirmForm">
         <div>
           <span class="h4">Product</span>
           <button type="button" class="btn-close float-end"  v-on:click="closeForm()"></button>
@@ -13,49 +13,49 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Bar Code</span>
           </div>
-          <input type="text" v-model="barCode" class="form-control" placeholder="########" aria-label="Bar Code" aria-describedby="basic-addon1">
+          <input type="text" v-model="barCode" class="form-control" placeholder="########" aria-label="Bar Code" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Product Name</span>
           </div>
-          <input type="text" v-model="productName" class="form-control" placeholder="Coca Cola" aria-label="Product Name" aria-describedby="basic-addon1">
+          <input type="text" v-model="productName" class="form-control" placeholder="Coca Cola" aria-label="Product Name" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Brand</span>
           </div>
-          <input type="text" v-model="brand" class="form-control" placeholder="Nestle" aria-label="Brand" aria-describedby="basic-addon1">
+          <input type="text" v-model="brand" class="form-control" placeholder="Nestle" aria-label="Brand" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">$</span>
           </div>
-          <input type="number" step="0.01" min="0.00" v-model="price" class="form-control" placeholder="29.99" aria-label="$" aria-describedby="basic-addon1">
+          <input type="number" step="0.01" min="0.00" v-model="price" class="form-control" placeholder="29.99" aria-label="$" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Qty</span>
           </div>
-          <input type="number" v-model="quantity" class="form-control" placeholder="0" aria-label="Qty" aria-describedby="basic-addon1">
+          <input type="number" v-model="quantity" class="form-control" placeholder="0" aria-label="Qty" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Qty Sold</span>
           </div>
-          <input type="number" v-model="quantitySold" class="form-control" placeholder="0" aria-label="Qty Sold" aria-describedby="basic-addon1">
+          <input type="number" v-model="quantitySold" class="form-control" placeholder="0" aria-label="Qty Sold" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Category ID</span>
           </div>
-          <input type="number" v-model="categoryId" class="form-control" placeholder="0" aria-label="Category ID" aria-describedby="basic-addon1">
+          <input type="number" v-model="categoryId" class="form-control" placeholder="0" aria-label="Category ID" aria-describedby="basic-addon1" required>
         </div>
         <div class="text-center gx-5">
         <div class="container px-4">
           <div class="row gx-1">
             <div class="col">
-              <button type="button" v-on:click="confirmForm()" class="btn btn-secondary">Confirm</button>
+              <button type="submit" class="btn btn-secondary">Confirm</button>
             </div>
             <div class="col">
               <button type="reset" class="btn btn-secondary">Reset</button>
@@ -195,6 +195,7 @@ export default defineComponent({
         }).catch(error => {
           console.log('addProduct() failed')
           console.log(error)
+          alert('Product was not able to be added. ' + error.response.data.message)
         })
     },
 
