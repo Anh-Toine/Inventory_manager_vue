@@ -28,6 +28,7 @@
             placeholder="Pepsico"
             aria-label="Supplier Name"
             aria-describedby="basic-addon1"
+				required
           />
         </div>
         <div class="input-group mb-3">
