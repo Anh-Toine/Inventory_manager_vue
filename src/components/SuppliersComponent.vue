@@ -181,8 +181,36 @@ export default defineComponent({
         this.email = ''
         this.telephone = ''
       },
-      getAllSuppliers () {
-            axios.get('http://localhost:8080/suppliers')
+
+    confirmForm () {
+      if (this.formAction === post) {
+        this.addSupplier()
+      }
+    },
+
+    addSupplier () {
+		const newSupplier = {
+			 supplierName: this.supplierName,
+			 representativeName: this.representativeName,
+			 email: this.email,
+			 phoneNumber: this.phoneNumber
+		}
+
+		const json = JSON.stringify(newSupplier)
+
+		axios.post('http://localhost:8080/suppliers', json, { headers: header })
+			.then(res => {
+				this.suppliers.push(res.data)
+				this.closeForm()
+			}).catch(error => {
+				console.log('addSupplier() failed')
+				console.log(error)
+				alert('Supplier cannot be added. Reason being: '+ error.response.data.message)
+			})
+    },
+
+    getAllSuppliers () {
+		axios.get('http://localhost:8080/suppliers')
                 .then(res => {
                     this.suppliers = res.data
                 }).catch(error => {
