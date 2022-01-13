@@ -125,9 +125,9 @@ export default defineComponent({
 
     confirmForm () {
       if (this.formAction === post) {
-        this.addcategory()
+        this.addCategory()
       } else {
-        this.updatecategory()
+        this.updateCategory()
       }
     },
 
