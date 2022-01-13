@@ -1,11 +1,17 @@
+
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Products from '../views/Products.vue'
-
+import Suppliers from '../views/Suppliers.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'ProductsPage',
     component: Products
+  },
+  {
+    path: '/suppliers',
+    name: 'SuppliersPage',
+    component: Suppliers
   },
   {
     path: '/about',
