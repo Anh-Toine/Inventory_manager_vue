@@ -13,6 +13,9 @@
                 <router-link to="/suppliers" class="text-white text-decoration-none nav-link">Suppliers</router-link>
               </div>
               <div class="highlightOnHover">
+                <router-link to="/categories" class="text-white text-decoration-none nav-link">Categories</router-link>
+              </div>
+              <div class="highlightOnHover">
                 <router-link to="/about" class="text-white text-decoration-none nav-link">ExampleAboutPage</router-link>
               </div>
           </ul>
