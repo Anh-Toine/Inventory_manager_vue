@@ -12,14 +12,10 @@
               <div class="highlightOnHover">
                 <router-link to="/suppliers" class="text-white text-decoration-none nav-link">Suppliers</router-link>
               </div>
-<<<<<<< HEAD
               <div class="highlightOnHover">
                 <router-link to="/categories" class="text-white text-decoration-none nav-link">Categories</router-link>
               </div>
-              <div class="highlightOnHover">
-=======
               <div class="highlightOnHover" id="logoutButton">
->>>>>>> e1555af (Added the Id's for selenium testing)
                 <router-link to="/" class="text-white text-decoration-none nav-link">Logout</router-link>
               </div>
           </ul>
