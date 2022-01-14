@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <div class="container-fluid h-100">
     <div class="row h-100 flex-nowrap">
         <div class="col-auto col-sm-2 px-sm-2 px-0 bg-dark">
@@ -7,20 +7,10 @@
           </div>
           <ul class="nav flex-sm-column justify-content-start min-vh-100 ">
               <div class="highlightOnHover">
-                <router-link to="/product" class="text-white text-decoration-none nav-link">Products</router-link>
+                <router-link to="/" class="text-white text-decoration-none nav-link">Products</router-link>
               </div>
-              <div class="highlightOnHover">
-                <router-link to="/suppliers" class="text-white text-decoration-none nav-link">Suppliers</router-link>
-              </div>
-<<<<<<< HEAD
-              <div class="highlightOnHover">
-                <router-link to="/categories" class="text-white text-decoration-none nav-link">Categories</router-link>
-              </div>
-              <div class="highlightOnHover">
-=======
-              <div class="highlightOnHover" id="logoutButton">
->>>>>>> e1555af (Added the Id's for selenium testing)
-                <router-link to="/" class="text-white text-decoration-none nav-link">Logout</router-link>
+               <div class="highlightOnHover">
+                <router-link to="/login" class="text-white text-decoration-none nav-link">Logout</router-link>
               </div>
           </ul>
         </div>
@@ -60,4 +50,4 @@
 .highlightOnHover:hover {
   background: rgba(245, 227, 227, 0.3)
 }
-</style>
+</style>-->
