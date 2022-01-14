@@ -3,9 +3,15 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Products from '../views/Products.vue'
 import Suppliers from '../views/Suppliers.vue'
 import Categories from '../views/Categories.vue'
+import Login from '../views/Login.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
+    name: 'LoginPage',
+    component: Login
+  },
+  {
+    path: '/product',
     name: 'ProductsPage',
     component: Products
   },
