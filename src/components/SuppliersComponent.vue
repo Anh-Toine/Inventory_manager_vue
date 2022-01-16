@@ -1,5 +1,5 @@
 <template>
-  <div id="productPage">
+  <div id="supplierPage">
     <button class="btn btn-secondary" v-on:click="showForm('post')">Add new supplier</button>
 
     <div class="form-popup p-4" id="popupDiv">
@@ -97,6 +97,8 @@ const header = { 'Content-Type': 'application/json' }
 
 const post = 'post'
 
+const update = 'update'
+
 export default defineComponent({
   name: 'SupplierPage',
   el: supplierPage,
@@ -166,6 +168,7 @@ export default defineComponent({
   }
 })
 </script>
+
 <style scoped lang="scss">
 .form-popup {
   display: none;
