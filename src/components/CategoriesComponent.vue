@@ -132,6 +132,9 @@ export default defineComponent({
     },
 
     editRow (category) {
+      this.categoryName = category.categoryName
+      this.taxable = category.taxable
+      this.tax = category.tax
       this.showForm(update)
     },
 
