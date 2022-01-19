@@ -76,7 +76,7 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" v-on:click="editRow(supplier)">Edit</a></li>
-                <li><a class="dropdown-item" v-on:click="deleteProduct(supplier.supplierName)">Delete</a></li>
+                <li><a class="dropdown-item" v-on:click="deleteSupplier(supplier.supplierName)">Delete</a></li>
               </ul>
           </div>
           </td>
@@ -129,7 +129,17 @@ export default defineComponent({
     confirmForm () {
       if (this.formAction === post) {
         this.addSupplier()
+      } else {
+        this.updateSupplier()
       }
+    },
+
+    editRow (supplier) {
+      this.supplierName = supplier.supplierName
+      this.representativeName = supplier.representativeName
+      this.email = supplier.email
+      this.phoneNumber = supplier.phoneNumber
+      this.showForm(update)
     },
 
     addSupplier () {
@@ -150,6 +160,28 @@ export default defineComponent({
           console.log('addSupplier() failed')
           console.log(error)
           alert('Supplier cannot be added. Reason being: ' + error.response.data.message)
+        })
+    },
+    updateSupplier () {
+      const updatedSupplier = {
+        supplierName: this.supplierName,
+        representativeName: this.representativeName,
+        email: this.email,
+        phoneNumber: this.phoneNumber
+      }
+
+      const updatejson = JSON.stringify(updatedSupplier)
+
+      axios.put('http://localhost:8080/suppliers/' + this.supplierName, updatejson, { headers: header })
+        .then(res => {
+          const storedIndex = this.suppliers.map(s => s.supplierName).indexOf(updatedSupplier.supplierName)
+          this.suppliers.splice(storedIndex, 1, res.data)
+          this.closeForm()
+        })
+        .catch(error => {
+          console.log('updateSupplier() failed')
+          console.log(error)
+          alert('Supplier cannot be updated. Reason being: ' + error.response.data.message)
         })
     },
 
