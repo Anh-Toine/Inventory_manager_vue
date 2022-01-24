@@ -76,7 +76,7 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" v-on:click="editRow(category)">Edit</a></li>
-                <li><a class="dropdown-item" v-on:click="deleteCategory(category.categoryName)">Delete</a></li>
+                <li><a class="dropdown-item" v-on:click="deleteCategory(category.categoryId)">Delete</a></li>
               </ul>
           </div>
           </td>
@@ -103,6 +103,7 @@ export default defineComponent({
   el: categoryPage,
   data () {
     return {
+      categoryId: '',
       categoryName: '',
       taxable: '',
       tax: '',
@@ -132,6 +133,7 @@ export default defineComponent({
     },
 
     editRow (category) {
+      this.categoryId = category.categoryId
       this.categoryName = category.categoryName
       this.taxable = category.taxable
       this.tax = category.tax
@@ -171,6 +173,7 @@ export default defineComponent({
 
     updateCategory () {
       const updatedCategory = {
+        categoryId: this.categoryId,
         categoryName: this.categoryName,
         taxable: this.taxable,
         tax: this.tax
@@ -178,7 +181,7 @@ export default defineComponent({
 
       const updatejson = JSON.stringify(updatedCategory)
 
-      axios.put('http://localhost:8080/categories/' + this.categoryName, updatejson, { headers: header })
+      axios.put('http://localhost:8080/categories/' + this.categoryId, updatejson, { headers: header })
         .then(res => {
           const storedIndex = this.categories.map(x => x.categoryName).indexOf(updatedCategory.categoryName)
           this.categories.splice(storedIndex, 1, res.data)
@@ -190,10 +193,10 @@ export default defineComponent({
         })
     },
 
-    deleteCategory (name) {
-      axios.delete('http://localhost:8080/categories/' + name)
+    deleteCategory (id) {
+      axios.delete('http://localhost:8080/categories/' + id)
         .then(res => {
-          const storedIndex = this.categories.map(x => x.categoryName).indexOf(name)
+          const storedIndex = this.categories.map(x => x.categoryId).indexOf(id)
           this.categories.splice(storedIndex)
         })
         .catch(error => {
