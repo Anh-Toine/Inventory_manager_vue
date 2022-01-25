@@ -197,7 +197,7 @@ export default defineComponent({
       axios.delete('http://localhost:8080/categories/' + id)
         .then(res => {
           const storedIndex = this.categories.map(x => x.categoryId).indexOf(id)
-          this.categories.splice(storedIndex)
+          this.categories.splice(storedIndex, 1)
         })
         .catch(error => {
           console.log('deleteCategories() failed')
