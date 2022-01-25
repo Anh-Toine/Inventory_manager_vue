@@ -184,6 +184,7 @@ export default defineComponent({
           alert('Supplier cannot be updated. Reason being: ' + error.response.data.message)
         })
     },
+    
     deleteSupplier (name) {
       axios.delete('http://localhost:8080/suppliers/' + name)
         .then(res => {
@@ -195,6 +196,7 @@ export default defineComponent({
           console.log(error)
         })
     },
+
     getAllSuppliers () {
       axios.get('http://localhost:8080/suppliers')
         .then(res => {
