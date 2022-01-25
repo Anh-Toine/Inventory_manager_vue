@@ -12,7 +12,7 @@
       <label for="floatingPassword">Password</label>
     </div>
     <button id="loginButton">
-        <router-link to="/product" class="text-white text-decoration-none nav-link">Login</router-link>
+        <router-link to="/products" class="text-white text-decoration-none nav-link">Login</router-link>
     </button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </form>

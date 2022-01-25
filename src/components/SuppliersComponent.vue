@@ -184,7 +184,17 @@ export default defineComponent({
           alert('Supplier cannot be updated. Reason being: ' + error.response.data.message)
         })
     },
-
+    deleteSupplier (name) {
+      axios.delete('http://localhost:8080/suppliers/' + name)
+        .then(res => {
+          const storedIndex = this.suppliers.map(s => s.supplierName).indexOf(name)
+          this.suppliers.splice(storedIndex)
+        })
+        .catch(error => {
+          console.log('deleteSupplier() failed')
+          console.log(error)
+        })
+    },
     getAllSuppliers () {
       axios.get('http://localhost:8080/suppliers')
         .then(res => {
