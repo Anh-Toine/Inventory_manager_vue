@@ -184,12 +184,12 @@ export default defineComponent({
           alert('Supplier cannot be updated. Reason being: ' + error.response.data.message)
         })
     },
-    
+
     deleteSupplier (name) {
       axios.delete('http://localhost:8080/suppliers/' + name)
         .then(res => {
           const storedIndex = this.suppliers.map(s => s.supplierName).indexOf(name)
-          this.suppliers.splice(storedIndex)
+          this.suppliers.splice(storedIndex, 1)
         })
         .catch(error => {
           console.log('deleteSupplier() failed')
