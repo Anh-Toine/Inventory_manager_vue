@@ -7,10 +7,13 @@
           </div>
           <ul class="nav flex-sm-column justify-content-start min-vh-100 ">
               <div class="highlightOnHover">
-                <router-link to="/product" class="text-white text-decoration-none nav-link">Products</router-link>
+                <router-link to="/products" class="text-white text-decoration-none nav-link">Products</router-link>
               </div>
               <div class="highlightOnHover">
                 <router-link to="/suppliers" class="text-white text-decoration-none nav-link">Suppliers</router-link>
+              </div>
+              <div class="highlightOnHover">
+                <router-link to="/orders" class="text-white text-decoration-none nav-link">Orders</router-link>
               </div>
               <div class="highlightOnHover">
                 <router-link to="/categories" class="text-white text-decoration-none nav-link">Categories</router-link>
