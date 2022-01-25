@@ -239,7 +239,7 @@ export default defineComponent({
       axios.delete('http://localhost:8080/products/' + code)
         .then(res => {
           const storedIndex = this.products.map(x => x.barCode).indexOf(code)
-          this.products.splice(storedIndex)
+          this.products.splice(storedIndex, 1)
         })
         .catch(error => {
           console.log('deleteProduct() failed')
