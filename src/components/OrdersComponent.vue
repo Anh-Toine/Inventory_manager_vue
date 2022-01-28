@@ -189,6 +189,7 @@ export default defineComponent({
 
     updateOrder () {
       const updatedOrder = {
+        orderId: this.orderId,
         orderDate: this.orderDate,
         received: this.received,
         payed: this.payed,
@@ -204,6 +205,7 @@ export default defineComponent({
           this.closeForm()
         })
         .catch(error => {
+          alert('Order cannot be added. Reason being: ' + error.response.data.message)
           console.log('updateOrder() failed')
           console.log(error)
         })
