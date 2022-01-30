@@ -211,7 +211,6 @@ export default defineComponent({
           this.closeForm()
         })
         .catch(error => {
-          alert('Order cannot be added. Reason being: ' + error.response.data.message)
           console.log('updateOrder() failed')
           console.log(error)
         })
