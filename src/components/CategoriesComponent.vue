@@ -1,7 +1,7 @@
 <template>
   <div id="categoryPage">
     <button class="btn btn-secondary" v-on:click="showForm('post')">Add new category</button>
-
+    <p>{{ t$('message') }}</p>
     <div class="form-popup p-4" id="popupDiv">
       <form id="addForm" @submit.prevent="confirmForm">
         <div>
