@@ -47,9 +47,13 @@
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Category ID</span>
+            <span class="input-group-text" id="basic-addon1">Category</span>
           </div>
-          <input type="number" v-model="categoryId" class="form-control" placeholder="0" aria-label="Category ID" aria-describedby="basic-addon1" required>
+          <select v-model="categoryId">
+            <option v-for="(category,index) in categories" :key="index" v-bind:value="category.categoryId">
+              <span>{{ category.categoryName }}</span>
+            </option>
+          </select>
         </div>
         <div class="text-center gx-5">
         <div class="container px-4">
@@ -79,7 +83,7 @@
           <th scope="col">Price</th>
           <th scope="col">Qty</th>
           <th scope="col">Qty Sold</th>
-          <th scope="col">Category Id</th>
+          <th scope="col">Category Name</th>
           <th scope="col">Options</th>
         </tr>
       </thead>
@@ -92,7 +96,7 @@
           <td><span v-text="product.price"></span></td>
           <td><span v-text="product.quantity"></span></td>
           <td><span v-text="product.quantitySold"></span></td>
-          <td><span v-text="product.categoryId"></span></td>
+          <td><span v-text="getCategoryName(product.categoryId)"></span></td>
 
           <td>
             <div class="dropdown">
@@ -135,7 +139,9 @@ export default defineComponent({
       quantity: '',
       quantitySold: '',
       categoryId: '',
+      catgegoryName: '',
       products: [],
+      categories: [],
       formAction: ''
     }
   },
@@ -245,11 +251,34 @@ export default defineComponent({
           console.log('deleteProduct() failed')
           console.log(error)
         })
+    },
+
+    getAllCategories () {
+      axios.get('http://localhost:8080/categories')
+        .then(res => {
+          this.categories = res.data
+        })
+        .catch(error => {
+          console.log('getAllCategories() failed')
+          console.log(error)
+        })
+    },
+    getCategoryName (id) {
+      for (let index = 0; index < this.categories.length; index++) {
+        const category = this.categories[index]
+        if (category.categoryId === id) {
+          console.log('category found')
+          return category.categoryName
+        } else {
+          console.log('category not found')
+        }
+      }
     }
   },
 
   // *Basically* on page load
   mounted () {
+    this.getAllCategories()
     this.getAllProducts()
   }
 })

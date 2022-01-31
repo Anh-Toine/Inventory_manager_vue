@@ -183,7 +183,7 @@ export default defineComponent({
 
       axios.put('http://localhost:8080/categories/' + this.categoryId, updatejson, { headers: header })
         .then(res => {
-          const storedIndex = this.categories.map(x => x.categoryName).indexOf(updatedCategory.categoryName)
+          const storedIndex = this.categories.map(x => x.categoryId).indexOf(updatedCategory.categoryId)
           this.categories.splice(storedIndex, 1, res.data)
           this.closeForm()
         })
