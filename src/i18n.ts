@@ -1,5 +1,4 @@
 import { createI18n, LocaleMessages, VueMessageType } from 'vue-i18n'
-
 /**
  * Load locale messages
  *
@@ -23,5 +22,6 @@ export default createI18n({
   legacy: false,
   locale: 'fr',
   fallbackLocale: 'en',
+  globalInjection: true,
   messages: loadLocaleMessages()
 })
