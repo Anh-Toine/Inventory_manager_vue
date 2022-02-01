@@ -116,6 +116,12 @@ export default defineComponent({
   el: orderPage,
   data () {
     return {
+      yourConfig: {
+        headers: {
+          Authorization: localStorage.getItem('user-token'),
+          'Content-Type': 'application/json'
+        }
+      },
       orderId: '',
       orderDate: '',
       received: '',
@@ -165,7 +171,7 @@ export default defineComponent({
 
       const json = JSON.stringify(newOrder)
 
-      axios.post('http://localhost:8080/orders', json, { headers: header })
+      axios.post('http://localhost:8080/orders', json, this.yourConfig)
         .then(res => {
           this.orders.push(res.data)
           this.closeForm()
@@ -177,7 +183,7 @@ export default defineComponent({
     },
 
     getAllOrders () {
-      axios.get('http://localhost:8080/orders')
+      axios.get('http://localhost:8080/orders', this.yourConfig)
         .then(res => {
           this.orders = res.data
         })
@@ -197,7 +203,7 @@ export default defineComponent({
 
       const updatejson = JSON.stringify(updatedOrder)
 
-      axios.put('http://localhost:8080/orders/' + this.orderId, updatejson, { headers: header })
+      axios.put('http://localhost:8080/orders/' + this.orderId, updatejson, this.yourConfig)
         .then(res => {
           const storedIndex = this.categories.map(x => x.orderDate).indexOf(updatedOrder.orderDate)
           this.orders.splice(storedIndex, 1, res.data)
@@ -212,6 +218,16 @@ export default defineComponent({
 
   // *Basically* on page load
   mounted () {
+    axios.get('http://localhost:8080/orders', this.yourConfig).then((resp) => {
+      this.info = resp.data
+      console.log(this.featureId)
+    }).catch((error) => {
+      if (error.response.status === 401) {
+        console.log('token expired')
+        this.$router.push('/login')
+      }
+      console.log(error)
+    })
     this.getAllOrders()
   }
 })

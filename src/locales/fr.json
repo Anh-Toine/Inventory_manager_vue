@@ -29,9 +29,9 @@
     "categories":"Catégories",
     "categoryName":"Nom de Catégorie",
     "taxable":"Taxable",
-    "tax":"Taxe"
+    "tax":"Taxe",
   
-   "username":"Nom d'utilisateur",
+    "username":"Nom d'utilisateur",
     "password":"Mot de passe",
     "login":"Connecter",
     "LoginHeader":"Connecter Vous"
