@@ -21,5 +21,10 @@
     "quantity":"Qté",
     "quantitySold":"Qté Vendu",
     "category":"Catégorie",
-    "options":"Options"
+    "options":"Options",
+
+    "username":"Nom d'utilisateur",
+    "password":"Mot de passe",
+    "login":"Connecter",
+    "LoginHeader":"Connecter Vous"
 }
