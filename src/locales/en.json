@@ -6,11 +6,14 @@
   "confirm":"Confirm",
   "reset":"Reset",
 
+  "yes":"yes",
+  "no":"no",
+
   "products":"Products",
   "suppliers":"Suppliers",
   "orders":"Orders",
-  "categories":"Categories",
   "logout":"Logout",
+  "options":"Options",
 
   "addProduct":"Add New Product",
   "barcode":"BarCode",
@@ -20,8 +23,11 @@
   "price":"Price",
   "quantity":"Qty",
   "quantitySold":"Qty Sold",
+  
+  "addCategory":"Add a New Category",
   "category":"Category",
-  "options":"Options"
-
-
+  "categories":"Categories",
+  "categoryName":"Category Name",
+  "taxable":"Taxable",
+  "tax":"Tax"
 }
