@@ -93,8 +93,6 @@ import { defineComponent } from 'vue'
 
 const supplierPage = document.getElementById('#supplierPage')
 
-const header = { 'Content-Type': 'application/json' }
-
 const post = 'post'
 
 const update = 'update'
@@ -104,6 +102,12 @@ export default defineComponent({
   el: supplierPage,
   data () {
     return {
+      yourConfig: {
+        headers: {
+          Authorization: localStorage.getItem('user-token'),
+          'Content-Type': 'application/json'
+        }
+      },
       supplierName: '',
       representativeName: '',
       email: '',
@@ -152,7 +156,7 @@ export default defineComponent({
 
       const json = JSON.stringify(newSupplier)
 
-      axios.post('http://localhost:8080/suppliers', json, { headers: header })
+      axios.post('http://localhost:8080/suppliers', json, this.yourConfig)
         .then(res => {
           this.suppliers.push(res.data)
           this.closeForm()
@@ -172,7 +176,7 @@ export default defineComponent({
 
       const updatejson = JSON.stringify(updatedSupplier)
 
-      axios.put('http://localhost:8080/suppliers/' + this.supplierName, updatejson, { headers: header })
+      axios.put('http://localhost:8080/suppliers/' + this.supplierName, updatejson, this.yourConfig)
         .then(res => {
           const storedIndex = this.suppliers.map(s => s.supplierName).indexOf(updatedSupplier.supplierName)
           this.suppliers.splice(storedIndex, 1, res.data)
@@ -186,7 +190,7 @@ export default defineComponent({
     },
 
     deleteSupplier (name) {
-      axios.delete('http://localhost:8080/suppliers/' + name)
+      axios.delete('http://localhost:8080/suppliers/' + name, this.yourConfig)
         .then(res => {
           const storedIndex = this.suppliers.map(s => s.supplierName).indexOf(name)
           this.suppliers.splice(storedIndex, 1)
@@ -198,7 +202,7 @@ export default defineComponent({
     },
 
     getAllSuppliers () {
-      axios.get('http://localhost:8080/suppliers')
+      axios.get('http://localhost:8080/suppliers', this.yourConfig)
         .then(res => {
           this.suppliers = res.data
         }).catch(error => {
@@ -208,6 +212,16 @@ export default defineComponent({
     }
   },
   mounted () {
+    axios.get('http://localhost:8080/suppliers', this.yourConfig).then((resp) => {
+      this.info = resp.data
+      console.log(this.featureId)
+    }).catch((error) => {
+      if (error.response.status === 401) {
+        console.log('token expired')
+        this.$router.push('/login')
+      }
+      console.log(error)
+    })
     this.getAllSuppliers()
   }
 })
