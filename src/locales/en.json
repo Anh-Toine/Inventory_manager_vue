@@ -5,7 +5,7 @@
   "delete":"Delete",
   "confirm":"Confirm",
   "reset":"Reset",
-
+  
   "yes":"yes",
   "no":"no",
 
@@ -23,6 +23,11 @@
   "price":"Price",
   "quantity":"Qty",
   "quantitySold":"Qty Sold",
+  
+  "username":"Username",
+  "password":"Password",
+  "login":"Login",
+  "LoginHeader":"Sign In"
   
   "addCategory":"Add a New Category",
   "category":"Category",

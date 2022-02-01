@@ -1,17 +1,17 @@
 <template>
     <main class="form-signin">
   <form v-on:submit.prevent="submitForm">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 fw-normal">{{ $t('LoginHeader') }}</h1>
 
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput" placeholder="Username" v-model="form.username">
-      <label for="floatingInput">Email address</label>
+      <label for="floatingInput">{{ $t('username') }}</label>
     </div>
     <div class="form-floating">
       <input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="form.password">
-      <label for="floatingPassword">Password</label>
+      <label for="floatingPassword">{{ $t('password') }}</label>
     </div>
-    <button type="submit" id="loginButton">Login</button>
+    <button type="submit" id="loginButton">{{ $t('login') }}</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </form>
 </main>

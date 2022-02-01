@@ -30,4 +30,9 @@
     "categoryName":"Nom de Catégorie",
     "taxable":"Taxable",
     "tax":"Taxe"
+  
+   "username":"Nom d'utilisateur",
+    "password":"Mot de passe",
+    "login":"Connecter",
+    "LoginHeader":"Connecter Vous"
 }
