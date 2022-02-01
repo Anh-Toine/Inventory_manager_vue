@@ -1,53 +1,53 @@
 <template>
   <div id="productPage">
-    <button class="btn btn-secondary" v-on:click="showForm('post')">Add new product</button>
+    <button class="btn btn-secondary" v-on:click="showForm('post')">{{ $t('addProduct') }}</button>
 
     <div class="form-popup p-4" id="popupDiv">
       <form id="addForm" @submit.prevent="confirmForm">
         <div>
-          <span class="h4">Product</span>
+          <span class="h4">{{ $t('product') }}</span>
           <button type="button" class="btn-close float-end"  v-on:click="closeForm()"></button>
         </div>
         <br>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Bar Code</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('barcode') }}</span>
           </div>
           <input type="text" v-model="barCode" class="form-control" placeholder="########" aria-label="Bar Code" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Product Name</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('productName') }}</span>
           </div>
           <input type="text" v-model="productName" class="form-control" placeholder="Coca Cola" aria-label="Product Name" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Brand</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('brand') }}</span>
           </div>
           <input type="text" v-model="brand" class="form-control" placeholder="Nestle" aria-label="Brand" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">$</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('price') }}</span>
           </div>
           <input type="number" step="0.01" min="0.00" v-model="price" class="form-control" placeholder="29.99" aria-label="$" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Qty</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('quantity') }}</span>
           </div>
           <input type="number" v-model="quantity" class="form-control" placeholder="0" aria-label="Qty" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Qty Sold</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('quantitySold') }}</span>
           </div>
           <input type="number" v-model="quantitySold" class="form-control" placeholder="0" aria-label="Qty Sold" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Category</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('category') }}</span>
           </div>
           <select v-model="categoryId">
             <option v-for="(category,index) in categories" :key="index" v-bind:value="category.categoryId">
@@ -59,10 +59,10 @@
         <div class="container px-4">
           <div class="row gx-1">
             <div class="col">
-              <button type="submit" class="btn btn-secondary">Confirm</button>
+              <button type="submit" class="btn btn-secondary">{{ $t('confirm') }}</button>
             </div>
             <div class="col">
-              <button type="reset" class="btn btn-secondary">Reset</button>
+              <button type="reset" class="btn btn-secondary">{{ $t('reset') }}</button>
             </div>
           </div>
         </div>
@@ -77,14 +77,14 @@
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Bar Code</th>
-          <th scope="col">Product Name</th>
-          <th scope="col">Brand</th>
-          <th scope="col">Price</th>
-          <th scope="col">Qty</th>
-          <th scope="col">Qty Sold</th>
-          <th scope="col">Category Name</th>
-          <th scope="col">Options</th>
+          <th scope="col">{{ $t('barcode') }}</th>
+          <th scope="col">{{ $t('product') }}</th>
+          <th scope="col">{{ $t('brand') }}</th>
+          <th scope="col">{{ $t('price') }}</th>
+          <th scope="col">{{ $t('quantity') }}</th>
+          <th scope="col">{{ $t('quantitySold') }}</th>
+          <th scope="col">{{ $t('category') }}</th>
+          <th scope="col">{{ $t('options') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -104,8 +104,8 @@
                 Actions
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" v-on:click="editRow(product)">Edit</a></li>
-                <li><a class="dropdown-item" v-on:click="deleteProduct(product.barCode)">Delete</a></li>
+                <li><a class="dropdown-item" v-on:click="editRow(product)">{{ $t('edit') }}</a></li>
+                <li><a class="dropdown-item" v-on:click="deleteProduct(product.barCode)">{{ $t('delete') }}</a></li>
               </ul>
           </div>
           </td>

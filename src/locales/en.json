@@ -1,3 +1,27 @@
 {
-  "message": "hello i18n !!"
+  "storeName":"Ste-Hélène Inventory Manager",
+  "language":"Language: ",
+  "edit":"Edit",
+  "delete":"Delete",
+  "confirm":"Confirm",
+  "reset":"Reset",
+
+  "products":"Products",
+  "suppliers":"Suppliers",
+  "orders":"Orders",
+  "categories":"Categories",
+  "logout":"Logout",
+
+  "addProduct":"Add New Product",
+  "barcode":"BarCode",
+  "product":"Product",
+  "productName":"Product Name",
+  "brand":"Brand",
+  "price":"Price",
+  "quantity":"Qty",
+  "quantitySold":"Qty Sold",
+  "category":"Category",
+  "options":"Options"
+
+
 }

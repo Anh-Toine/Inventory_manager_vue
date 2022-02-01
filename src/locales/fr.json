@@ -1,3 +1,25 @@
 {
-    "message": "bonjour i18n !!"
+    "storeName": "Gestionnaire D'Inventaire Ste-Hélène",
+    "language":"Langue: ",
+    "edit":"Changer",
+    "delete":"Supprimer",
+    "confirm":"Confirmer",
+    "reset":"Effacer",
+
+    "products":"Produits",
+    "suppliers":"Fournisseurs",
+    "orders":"Commandes",
+    "categories":"Catégories",
+    "logout":"Déconnecter",
+
+    "addProduct":"Ajouter un Nouveau Produit",
+    "barcode":"Code Barre",
+    "product":"Produit",
+    "productName":"Nom du Produit",
+    "brand":"Marque",
+    "price":"Prix",
+    "quantity":"Qté",
+    "quantitySold":"Qté Vendu",
+    "category":"Catégorie",
+    "options":"Options"
 }
