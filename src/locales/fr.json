@@ -6,10 +6,12 @@
     "confirm":"Confirmer",
     "reset":"Effacer",
 
+    "yes":"Oui",
+    "no":"Non",
+  
     "products":"Produits",
     "suppliers":"Fournisseurs",
     "orders":"Commandes",
-    "categories":"Catégories",
     "logout":"Déconnecter",
 
     "addProduct":"Ajouter un Nouveau Produit",
@@ -20,10 +22,16 @@
     "price":"Prix",
     "quantity":"Qté",
     "quantitySold":"Qté Vendu",
-    "category":"Catégorie",
     "options":"Options",
 
-    "username":"Nom d'utilisateur",
+    "addCategory":"Ajouter une Nouvelle Catégorie",    
+    "category":"Catégorie",
+    "categories":"Catégories",
+    "categoryName":"Nom de Catégorie",
+    "taxable":"Taxable",
+    "tax":"Taxe"
+  
+   "username":"Nom d'utilisateur",
     "password":"Mot de passe",
     "login":"Connecter",
     "LoginHeader":"Connecter Vous"
