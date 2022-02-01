@@ -122,8 +122,6 @@ import { defineComponent } from 'vue'
 
 const productPage = document.getElementById('#productPage')
 
-const header = { 'Content-Type': 'application/json' }
-
 const post = 'post'
 const update = 'update'
 
@@ -132,6 +130,12 @@ export default defineComponent({
   el: productPage,
   data () {
     return {
+      yourConfig: {
+        headers: {
+          Authorization: localStorage.getItem('user-token'),
+          'Content-Type': 'application/json'
+        }
+      },
       barCode: '',
       productName: '',
       brand: '',
@@ -194,7 +198,7 @@ export default defineComponent({
 
       const json = JSON.stringify(newProduct)
 
-      axios.post('http://localhost:8080/products', json, { headers: header })
+      axios.post('http://localhost:8080/products', json, this.yourConfig)
         .then(res => {
           this.products.push(res.data)
           this.closeForm()
@@ -206,7 +210,7 @@ export default defineComponent({
     },
 
     getAllProducts () {
-      axios.get('http://localhost:8080/products')
+      axios.get('http://localhost:8080/products', this.yourConfig)
         .then(res => {
           this.products = res.data
         })
@@ -229,7 +233,7 @@ export default defineComponent({
 
       const updatejson = JSON.stringify(updatedProduct)
 
-      axios.put('http://localhost:8080/products/' + this.barCode, updatejson, { headers: header })
+      axios.put('http://localhost:8080/products/' + this.barCode, updatejson, this.yourConfig)
         .then(res => {
           const storedIndex = this.products.map(x => x.barCode).indexOf(updatedProduct.barCode)
           this.products.splice(storedIndex, 1, res.data)
@@ -242,7 +246,7 @@ export default defineComponent({
     },
 
     deleteProduct (code) {
-      axios.delete('http://localhost:8080/products/' + code)
+      axios.delete('http://localhost:8080/products/' + code, this.yourConfig)
         .then(res => {
           const storedIndex = this.products.map(x => x.barCode).indexOf(code)
           this.products.splice(storedIndex, 1)
@@ -254,7 +258,7 @@ export default defineComponent({
     },
 
     getAllCategories () {
-      axios.get('http://localhost:8080/categories')
+      axios.get('http://localhost:8080/categories', this.yourConfig)
         .then(res => {
           this.categories = res.data
         })
@@ -278,6 +282,16 @@ export default defineComponent({
 
   // *Basically* on page load
   mounted () {
+    axios.get('http://localhost:8080/products', this.yourConfig).then((resp) => {
+      this.info = resp.data
+      console.log(this.featureId)
+    }).catch((error) => {
+      if (error.response.status === 401) {
+        console.log('token expired')
+        this.$router.push('/login')
+      }
+      console.log(error)
+    })
     this.getAllCategories()
     this.getAllProducts()
   }

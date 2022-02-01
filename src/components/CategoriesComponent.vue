@@ -92,8 +92,6 @@ import { defineComponent } from 'vue'
 
 const categoryPage = document.getElementById('#categoryPage')
 
-const header = { 'Content-Type': 'application/json' }
-
 const post = 'post'
 const update = 'update'
 
@@ -102,6 +100,12 @@ export default defineComponent({
   el: categoryPage,
   data () {
     return {
+      yourConfig: {
+        headers: {
+          Authorization: localStorage.getItem('user-token'),
+          'Content-Type': 'application/json'
+        }
+      },
       categoryId: '',
       categoryName: '',
       taxable: '',
@@ -148,7 +152,7 @@ export default defineComponent({
 
       const json = JSON.stringify(newCategory)
 
-      axios.post('http://localhost:8080/categories', json, { headers: header })
+      axios.post('http://localhost:8080/categories', json, this.yourConfig)
         .then(res => {
           this.categories.push(res.data)
           this.closeForm()
@@ -160,7 +164,7 @@ export default defineComponent({
     },
 
     getAllCategories () {
-      axios.get('http://localhost:8080/categories')
+      axios.get('http://localhost:8080/categories', this.yourConfig)
         .then(res => {
           this.categories = res.data
         })
@@ -180,7 +184,7 @@ export default defineComponent({
 
       const updatejson = JSON.stringify(updatedCategory)
 
-      axios.put('http://localhost:8080/categories/' + this.categoryId, updatejson, { headers: header })
+      axios.put('http://localhost:8080/categories/' + this.categoryId, updatejson, this.yourConfig)
         .then(res => {
           const storedIndex = this.categories.map(x => x.categoryId).indexOf(updatedCategory.categoryId)
           this.categories.splice(storedIndex, 1, res.data)
@@ -193,7 +197,7 @@ export default defineComponent({
     },
 
     deleteCategory (id) {
-      axios.delete('http://localhost:8080/categories/' + id)
+      axios.delete('http://localhost:8080/categories/' + id, this.yourConfig)
         .then(res => {
           const storedIndex = this.categories.map(x => x.categoryId).indexOf(id)
           this.categories.splice(storedIndex, 1)
@@ -205,8 +209,17 @@ export default defineComponent({
     }
   },
 
-  // *Basically* on page load
   mounted () {
+    axios.get('http://localhost:8080/categories', this.yourConfig).then((resp) => {
+      this.info = resp.data
+      console.log(this.featureId)
+    }).catch((error) => {
+      if (error.response.status === 401) {
+        console.log('token expired')
+        this.$router.push('/login')
+      }
+      console.log(error)
+    })
     this.getAllCategories()
   }
 })

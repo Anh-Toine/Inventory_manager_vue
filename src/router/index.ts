@@ -6,19 +6,25 @@ import Categories from '../views/Categories.vue'
 import Login from '../views/Login.vue'
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: '/login',
     name: 'LoginPage',
     component: Login
   },
   {
     path: '/products',
     name: 'ProductsPage',
-    component: Products
+    component: Products,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/suppliers',
     name: 'SuppliersPage',
-    component: Suppliers
+    component: Suppliers,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/categories',
