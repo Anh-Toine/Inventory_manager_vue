@@ -238,7 +238,7 @@ export default defineComponent({
   z-index: 9;
 }
 
-#productPage {
+#supplierPage {
   text-align: start;
 }
 

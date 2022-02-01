@@ -4,6 +4,7 @@ import Products from '../views/Products.vue'
 import Suppliers from '../views/Suppliers.vue'
 import Categories from '../views/Categories.vue'
 import Login from '../views/Login.vue'
+import Orders from '../views/Orders.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
@@ -17,6 +18,11 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: '/orders',
+    name: 'OrdersPage',
+    component: Orders
   },
   {
     path: '/suppliers',
