@@ -1,35 +1,35 @@
 <template>
   <div id="categoryPage">
-    <button class="btn btn-secondary" v-on:click="showForm('post')">Add new category</button>
+    <button class="btn btn-secondary" v-on:click="showForm('post')">{{ $t('addCategory') }}</button>
     <div class="form-popup p-4" id="popupDiv">
       <form id="addForm" @submit.prevent="confirmForm">
         <div>
-          <span class="h4">Category</span>
+          <span class="h4">{{ $t('category') }}</span>
           <button type="button" class="btn-close float-end"  v-on:click="closeForm()"></button>
         </div>
         <br>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Category Name</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('categoryName') }}</span>
           </div>
           <input type="text" v-model="categoryName" class="form-control" placeholder="Grocery_non_taxable" aria-label="Category Name" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Taxable</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('taxable') }}</span>
           </div>
           <div class="form-control">
             <input type="radio" id="taxTrue" name="isTaxable" value="true" v-model="taxable" required>&nbsp;
-            <label for="taxTrue">Yes</label>
+            <label for="taxTrue">{{ $t('yes') }}</label>
           </div>
           <div class="form-control">
             <input type="radio" id="taxFalse" name="isTaxable" value="false" v-model="taxable">&nbsp;
-            <label for="taxFalse">No</label>
+            <label for="taxFalse">{{ $t('no') }}</label>
           </div>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Tax</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('tax') }}</span>
           </div>
           <input type="number" step="0.00001" min="0.00000" v-model="tax" class="form-control" placeholder="0.14975" aria-label="Tax amount" aria-describedby="basic-addon1" required>
         </div>
@@ -37,10 +37,10 @@
         <div class="container px-4">
           <div class="row gx-1">
             <div class="col">
-              <button type="submit" class="btn btn-secondary">Confirm</button>
+              <button type="submit" class="btn btn-secondary">{{ $t('confirm') }}</button>
             </div>
             <div class="col">
-              <button type="reset" class="btn btn-secondary">Reset</button>
+              <button type="reset" class="btn btn-secondary">{{ $t('reset') }}</button>
             </div>
           </div>
         </div>
@@ -55,10 +55,10 @@
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Category Name</th>
-          <th scope="col">Taxable</th>
-          <th scope="col">Tax</th>
-          <th scope="col">Options</th>
+          <th scope="col">{{ $t('categoryName') }}</th>
+          <th scope="col">{{ $t('taxable') }}</th>
+          <th scope="col">{{ $t('tax') }}</th>
+          <th scope="col">{{ $t('options') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -74,8 +74,8 @@
                 Actions
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" v-on:click="editRow(category)">Edit</a></li>
-                <li><a class="dropdown-item" v-on:click="deleteCategory(category.categoryId)">Delete</a></li>
+                <li><a class="dropdown-item" v-on:click="editRow(category)">{{ $t('edit') }}</a></li>
+                <li><a class="dropdown-item" v-on:click="deleteCategory(category.categoryId)">{{ $t('delete') }}</a></li>
               </ul>
           </div>
           </td>
