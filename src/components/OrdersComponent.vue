@@ -206,7 +206,7 @@ export default defineComponent({
 
       axios.put('http://localhost:8080/orders/' + this.orderId, updatejson, this.yourConfig)
         .then(res => {
-          const storedIndex = this.categories.map(x => x.orderDate).indexOf(updatedOrder.orderDate)
+          const storedIndex = this.categories.map(x => x.orderId).indexOf(updatedOrder.orderDate)
           this.orders.splice(storedIndex, 1, res.data)
           this.closeForm()
         })
