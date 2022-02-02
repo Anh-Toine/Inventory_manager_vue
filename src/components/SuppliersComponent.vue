@@ -5,7 +5,7 @@
     <div class="form-popup p-4" id="popupDiv">
       <form id="addForm" @submit.prevent="confirmForm">
         <div>
-          <span class="h4">Supplier</span>
+          <span class="h4">{{ $t('supplier') }}</span>
           <button type="button" class="btn-close float-end"  v-on:click="closeForm()"></button>
         </div>
         <br>
