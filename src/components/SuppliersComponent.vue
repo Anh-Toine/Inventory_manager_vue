@@ -1,6 +1,6 @@
 <template>
   <div id="supplierPage">
-    <button class="btn btn-secondary" v-on:click="showForm('post')">Add new supplier</button>
+    <button class="btn btn-secondary" v-on:click="showForm('post')">{{ $t('addSupplier') }}</button>
 
     <div class="form-popup p-4" id="popupDiv">
       <form id="addForm" @submit.prevent="confirmForm">
@@ -11,25 +11,25 @@
         <br>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Supplier Name</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('supplierName') }}</span>
           </div>
           <input type="text" v-model="supplierName" class="form-control" placeholder="Pepsico" aria-label="Supplier Name" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Representative Name</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('representativeName') }}</span>
           </div>
           <input type="text" v-model="representativeName" class="form-control" placeholder="Eric Doe" aria-label="Representative Name" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Email</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('email') }}</span>
           </div>
           <input type="text" v-model="email" class="form-control" placeholder="erik928331@emailaddr.com" aria-label="Email" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Phone Number</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('phoneNumber') }}</span>
           </div>
           <input type="text" v-model="phoneNumber" class="form-control" placeholder="000-000-0000" aria-label="Phone Number" aria-describedby="basic-addon1" required>
         </div>
@@ -37,10 +37,10 @@
         <div class="container px-4">
           <div class="row gx-1">
             <div class="col">
-              <button type="submit" class="btn btn-secondary">Confirm</button>
+              <button type="submit" class="btn btn-secondary">{{ $t('confirm') }}</button>
             </div>
             <div class="col">
-              <button type="reset" class="btn btn-secondary">Reset</button>
+              <button type="reset" class="btn btn-secondary">{{ $t('reset') }}</button>
             </div>
           </div>
         </div>
@@ -55,10 +55,10 @@
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Supplier Name</th>
-          <th scope="col">Representative Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Phone Number</th>
+          <th scope="col">{{ $t('supplierName') }}</th>
+          <th scope="col">{{ $t('representativeName') }}</th>
+          <th scope="col">{{ $t('email') }}</th>
+          <th scope="col">{{ $t('phoneNumber') }}</th>
           <th scope="col">Options</th>
         </tr>
       </thead>
@@ -75,8 +75,8 @@
                 Actions
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" v-on:click="editRow(supplier)">Edit</a></li>
-                <li><a class="dropdown-item" v-on:click="deleteSupplier(supplier.supplierName)">Delete</a></li>
+                <li><a class="dropdown-item" v-on:click="editRow(supplier)">{{ $t('edit') }}</a></li>
+                <li><a class="dropdown-item" v-on:click="deleteSupplier(supplier.supplierName)">{{ $t('delete') }}</a></li>
               </ul>
           </div>
           </td>
