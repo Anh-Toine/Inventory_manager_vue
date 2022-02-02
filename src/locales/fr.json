@@ -38,7 +38,7 @@
 
     "addSupplier":"Ajouter un Nouveau Fournisseur",
     "supplierName":"Nom de Fournisseur",
-    "representativeName":"Nom de Representatif",
+    "representativeName":"Nom du Représentant",
     "email":"Courriel Web",
     "phoneNumber":"Numéro de Téléphone"
 }
