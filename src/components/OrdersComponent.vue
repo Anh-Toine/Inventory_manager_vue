@@ -1,23 +1,23 @@
 <template>
   <div id="orderPage">
-    <button class="btn btn-secondary" v-on:click="showForm('post')">Add new order</button>
+    <button class="btn btn-secondary" v-on:click="showForm('post')">{{ $t('addOrder') }}</button>
 
     <div class="form-popup p-4" id="popupDiv">
       <form id="addForm" @submit.prevent="confirmForm">
         <div>
-          <span class="h4">Order</span>
+          <span class="h4">{{ $t('order') }}</span>
           <button type="button" class="btn-close float-end"  v-on:click="closeForm()"></button>
         </div>
         <br>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Order Date</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('orderDate') }}</span>
           </div>
           <input type="text" v-model="orderDate" class="form-control" placeholder="DD-MM-YYYY" aria-label="Order Date" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Received</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('received') }}</span>
           </div>
           <div class="form-control">
             <input type="radio" id="receivedTrue" name="isReceived" value="true" v-model="received" required>&nbsp;
