@@ -195,6 +195,7 @@ export default defineComponent({
 
     updateOrder () {
       const updatedOrder = {
+        orderId: this.orderId,
         orderDate: this.orderDate,
         received: this.received,
         payed: this.payed,
@@ -205,7 +206,7 @@ export default defineComponent({
 
       axios.put('http://localhost:8080/orders/' + this.orderId, updatejson, this.yourConfig)
         .then(res => {
-          const storedIndex = this.categories.map(x => x.orderDate).indexOf(updatedOrder.orderDate)
+          const storedIndex = this.orders.map(x => x.orderId).indexOf(updatedOrder.orderId)
           this.orders.splice(storedIndex, 1, res.data)
           this.closeForm()
         })
