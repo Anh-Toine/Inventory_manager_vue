@@ -21,40 +21,44 @@
           </div>
           <div class="form-control">
             <input type="radio" id="receivedTrue" name="isReceived" value="true" v-model="received" required>&nbsp;
-            <label for="receivedTrue">Yes</label>
+            <label for="receivedTrue">{{ $t('yes') }}</label>
           </div>
           <div class="form-control">
             <input type="radio" id="receivedFalse" name="isReceived" value="false" v-model="received">&nbsp;
-            <label for="taxFalse">No</label>
+            <label for="taxFalse">{{ $t('no') }}</label>
           </div>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Payed</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('payed') }}</span>
           </div>
           <div class="form-control">
             <input type="radio" id="payedTrue" name="isPayed" value="true" v-model="payed" required>&nbsp;
-            <label for="payedTrue">Yes</label>
+            <label for="payedTrue">{{ $t('yes') }}</label>
           </div>
           <div class="form-control">
             <input type="radio" id="payedFalse" name="isPayed" value="false" v-model="payed">&nbsp;
-            <label for="payedFalse">No</label>
+            <label for="payedFalse">{{ $t('no') }}</label>
           </div>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Supplier ID</span>
+            <span class="input-group-text" id="basic-addon1">{{ $t('supplier') }}</span>
           </div>
-          <input type="text" v-model="supplierId" class="form-control" placeholder="0" aria-label="Supplier ID" aria-describedby="basic-addon1" required>
+          <select v-model="supplierId">
+            <option v-for="(supplier,index) in suppliers" :key="index" v-bind:value="supplier.supplierId">
+              <span>{{ supplier.supplierName }}</span>
+            </option>
+          </select>
         </div>
         <div class="text-center gx-5">
         <div class="container px-4">
           <div class="row gx-1">
             <div class="col">
-              <button type="submit" class="btn btn-secondary">Confirm</button>
+              <button type="submit" class="btn btn-secondary">{{ $t('confirm') }}</button>
             </div>
             <div class="col">
-              <button type="reset" class="btn btn-secondary">Reset</button>
+              <button type="reset" class="btn btn-secondary">{{ $t('reset') }}</button>
             </div>
           </div>
         </div>
@@ -69,11 +73,11 @@
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Order Date</th>
-          <th scope="col">Received</th>
-          <th scope="col">Payed</th>
-          <th scope="col">Supplier ID</th>
-          <th scope="col">Options</th>
+          <th scope="col">{{ $t('orderDate') }}</th>
+          <th scope="col">{{ $t('received') }}</th>
+          <th scope="col">{{ $t('payed') }}</th>
+          <th scope="col">{{ $t('supplier') }}</th>
+          <th scope="col">{{ $t('options') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -82,14 +86,14 @@
           <td><span v-text="order.orderDate"></span></td>
           <td><span v-text="order.received"></span></td>
           <td><span v-text="order.payed"></span></td>
-          <td><span v-text="order.supplierId"></span></td>
+          <td><span v-text="getSupplierName(order.supplierId)"></span></td>
           <td>
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Actions
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" v-on:click="editRow(order)">Edit</a></li>
+                <li><a class="dropdown-item" v-on:click="editRow(order)">{{ $t('edit') }}</a></li>
               </ul>
           </div>
           </td>
@@ -127,7 +131,9 @@ export default defineComponent({
       received: '',
       payed: '',
       supplierId: '',
+      supplierName: '',
       orders: [],
+      suppliers: [],
       formAction: ''
     }
   },
@@ -154,6 +160,7 @@ export default defineComponent({
     },
 
     editRow (order) {
+      this.orderId = order.orderId
       this.orderDate = order.orderDate
       this.received = order.received
       this.payed = order.payed
@@ -214,6 +221,28 @@ export default defineComponent({
           console.log('updateOrder() failed')
           console.log(error)
         })
+    },
+
+    getAllSuppliers () {
+      axios.get('http://localhost:8080/suppliers', this.yourConfig)
+        .then(res => {
+          this.suppliers = res.data
+        })
+        .catch(error => {
+          alert('getAllSuppliers() failed. Reason being: ' + error)
+          console.log(error)
+        })
+    },
+
+    getSupplierName (id) {
+      for (let i = 0; i < this.suppliers.length; i++) {
+        const supplier = this.suppliers[i]
+        if (supplier.supplierId === id) {
+          return supplier.supplierName
+        } else {
+          console.log('Supplier not found')
+        }
+      }
     }
   },
 
@@ -230,6 +259,7 @@ export default defineComponent({
       console.log(error)
     })
     this.getAllOrders()
+    this.getAllSuppliers()
   }
 })
 </script>

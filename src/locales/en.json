@@ -8,6 +8,8 @@
   
   "yes":"yes",
   "no":"no",
+  "true":"true",
+  "false":"false",
 
   "products":"Products",
   "suppliers":"Suppliers",
@@ -41,5 +43,11 @@
   "supplierName":"Supplier Name",
   "representativeName":"Representative Name",
   "email":"Email",
-  "phoneNumber":"Phone Number"
+  "phoneNumber":"Phone Number",
+
+  "addOrder":"Add a New Order",
+  "order":"Order",
+  "orderDate": "Order Date",
+  "received":"Received",
+  "payed":"Payed"
 }
