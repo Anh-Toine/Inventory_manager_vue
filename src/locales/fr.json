@@ -8,6 +8,8 @@
 
     "yes":"Oui",
     "no":"Non",
+    "true":"Vrai",
+    "false":"Faux",
   
     "products":"Produits",
     "suppliers":"Fournisseurs",
@@ -37,8 +39,15 @@
     "LoginHeader":"Connecter Vous",
 
     "addSupplier":"Ajouter un Nouveau Fournisseur",
+    "supplier":"Fournisseur",
     "supplierName":"Nom de Fournisseur",
     "representativeName":"Nom du Représentant",
     "email":"Courriel Web",
-    "phoneNumber":"Numéro de Téléphone"
+    "phoneNumber":"Numéro de Téléphone",
+
+    "addOrder":"Ajouter une Nouvelle Commande",
+    "order":"Commande",
+    "orderDate": "Date de Commande",
+    "received":"Reçu",
+    "payed":"Payé"
 }

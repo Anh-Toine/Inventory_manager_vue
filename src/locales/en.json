@@ -8,6 +8,8 @@
   
   "yes":"yes",
   "no":"no",
+  "true":"true",
+  "false":"false",
 
   "products":"Products",
   "suppliers":"Suppliers",
@@ -16,7 +18,7 @@
   "options":"Options",
 
   "addProduct":"Add New Product",
-  "barcode":"BarCode",
+  "barcode":"Bar Code",
   "product":"Product",
   "productName":"Product Name",
   "brand":"Brand",
@@ -37,8 +39,15 @@
   "tax":"Tax",
 
   "addSupplier":"Add a New Supplier",
+  "supplier":"Supplier",
   "supplierName":"Supplier Name",
   "representativeName":"Representative Name",
   "email":"Email",
-  "phoneNumber":"Phone Number"
+  "phoneNumber":"Phone Number",
+
+  "addOrder":"Add a New Order",
+  "order":"Order",
+  "orderDate": "Order Date",
+  "received":"Received",
+  "payed":"Payed"
 }
