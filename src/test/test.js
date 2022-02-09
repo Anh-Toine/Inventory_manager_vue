@@ -6,6 +6,6 @@ const orderspage = require('../views/Orders.vue')
 describe('Orders are visible', () => {
   it('Check to see if the orders are visible ', function(){
     const wrapper = shallowMount(orderspage)
-    expect(wrapper.contains('template')).toBe(true)
+    expect(wrapper.contains('#orderPage')).toBe(true)
   })
 });
