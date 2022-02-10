@@ -1,5 +1,6 @@
 import { expect } from 'chai'
 import { shallowMount } from '@vue/test-utils'
+import 'localStorage.js'
 import Products from '@/components/ProductsComponent.vue'
 
 describe('ProductsComponent.vue', () => {
