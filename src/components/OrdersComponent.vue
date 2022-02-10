@@ -229,7 +229,6 @@ export default defineComponent({
           this.suppliers = res.data
         })
         .catch(error => {
-          alert('getAllSuppliers() failed. Reason being: ' + error)
           console.log(error)
         })
     },
