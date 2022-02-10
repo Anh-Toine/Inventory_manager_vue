@@ -27,6 +27,9 @@
               <div class="highlightOnHover">
                 <router-link to="/categories" class="text-white text-decoration-none nav-link">{{ $t('categories') }}</router-link>
               </div>
+              <div class="highlightOnHOver">
+                <router-link to="/reports" class="text-white text-decoration-none nav-link">Reports</router-link>
+              </div>
               <div class="highlightOnHover" id="logoutButton">
                 <router-link to="/login" class="text-white text-decoration-none nav-link">{{ $t('logout') }}</router-link>
               </div>

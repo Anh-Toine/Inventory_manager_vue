@@ -5,6 +5,7 @@ import Suppliers from '../views/Suppliers.vue'
 import Categories from '../views/Categories.vue'
 import Login from '../views/Login.vue'
 import Orders from '../views/Orders.vue'
+import Reports from '../views/Reports.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
@@ -36,6 +37,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/categories',
     name: 'CategoriesPage',
     component: Categories
+  },
+  {
+    path: '/reports',
+    name: 'ReportsPage',
+    component: Reports
   },
   {
     path: '/about',
