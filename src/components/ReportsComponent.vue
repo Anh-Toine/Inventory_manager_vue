@@ -39,7 +39,7 @@ export default defineComponent({
           const rpt = new jspdf()
 
           rpt.text('Dépanneur Sainte-Hélène', 10, 10)
-          rpt.text(this.$t('products'), 10, 30)
+          rpt.text('Inventory Value', 10, 30)
           autoTable(rpt, {
             head: [['Date', 'Total Value']],
             margin: { top: 50 },
