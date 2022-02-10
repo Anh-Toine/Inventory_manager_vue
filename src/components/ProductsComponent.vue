@@ -271,10 +271,7 @@ export default defineComponent({
       for (let index = 0; index < this.categories.length; index++) {
         const category = this.categories[index]
         if (category.categoryId === id) {
-          console.log('category found')
           return category.categoryName
-        } else {
-          console.log('category not found')
         }
       }
     }
