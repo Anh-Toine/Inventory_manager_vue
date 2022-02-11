@@ -13,43 +13,43 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">{{ $t('barcode') }}</span>
           </div>
-          <input type="text" v-model="barCode" class="form-control" placeholder="########" aria-label="Bar Code" aria-describedby="basic-addon1" required>
+          <input type="text" v-model.lazy="barCode" class="form-control" placeholder="########" aria-label="Bar Code" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">{{ $t('productName') }}</span>
           </div>
-          <input type="text" v-model="productName" class="form-control" placeholder="Coca Cola" aria-label="Product Name" aria-describedby="basic-addon1" required>
+          <input type="text" v-model.lazy="productName" class="form-control" placeholder="Coca Cola" aria-label="Product Name" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">{{ $t('brand') }}</span>
           </div>
-          <input type="text" v-model="brand" class="form-control" placeholder="Nestle" aria-label="Brand" aria-describedby="basic-addon1" required>
+          <input type="text" v-model.lazy="brand" class="form-control" placeholder="Nestle" aria-label="Brand" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">{{ $t('price') }}</span>
           </div>
-          <input type="number" step="0.01" min="0.00" v-model="price" class="form-control" placeholder="29.99" aria-label="$" aria-describedby="basic-addon1" required>
+          <input type="number" step="0.01" min="0.00" v-model.lazy="price" class="form-control" placeholder="29.99" aria-label="$" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">{{ $t('quantity') }}</span>
           </div>
-          <input type="number" v-model="quantity" class="form-control" placeholder="0" aria-label="Qty" aria-describedby="basic-addon1" required>
+          <input type="number" v-model.lazy="quantity" class="form-control" placeholder="0" aria-label="Qty" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">{{ $t('quantitySold') }}</span>
           </div>
-          <input type="number" v-model="quantitySold" class="form-control" placeholder="0" aria-label="Qty Sold" aria-describedby="basic-addon1" required>
+          <input type="number" v-model.lazy="quantitySold" class="form-control" placeholder="0" aria-label="Qty Sold" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">{{ $t('category') }}</span>
           </div>
-          <select v-model="categoryId">
+          <select v-model.lazy="categoryId">
             <option v-for="(category,index) in categories" :key="index" v-bind:value="category.categoryId">
               <span>{{ category.categoryName }}</span>
             </option>
