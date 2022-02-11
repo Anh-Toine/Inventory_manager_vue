@@ -143,7 +143,7 @@ export default defineComponent({
       quantity: '',
       quantitySold: '',
       categoryId: '',
-      catgegoryName: '',
+      categoryName: '',
       products: [],
       categories: [],
       formAction: ''
