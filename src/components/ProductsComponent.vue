@@ -1,6 +1,7 @@
 <template>
   <div id="productPage">
     <button class="btn btn-secondary" v-on:click="showForm('post')">{{ $t('addProduct') }}</button>
+    <input type="text" class="float-sm-right" id="myInput" v-on:keyup="myFunction()" placeholder="Search for Product by Name"/>
 
     <div class="form-popup p-4" id="popupDiv">
       <form id="addForm" @submit.prevent="confirmForm">
@@ -73,7 +74,7 @@
     <br>
     <br>
 
-    <table class="table table-striped">
+    <table class="table table-striped" id="myTable">
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
@@ -272,6 +273,24 @@ export default defineComponent({
         const category = this.categories[index]
         if (category.categoryId === id) {
           return category.categoryName
+        }
+      }
+    },
+    myFunction () {
+      var input, filter, table, tr, td, i, txtValue
+      input = document.getElementById('myInput')
+      filter = input.value.toUpperCase()
+      table = document.getElementById('myTable')
+      tr = table.getElementsByTagName('tr')
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName('td')[1]
+        if (td) {
+          txtValue = td.textContent || td.innerText
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = ''
+          } else {
+            tr[i].style.display = 'none'
+          }
         }
       }
     }
