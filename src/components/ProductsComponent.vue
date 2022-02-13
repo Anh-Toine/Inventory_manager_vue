@@ -79,10 +79,10 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">{{ $t('barcode') }}</th>
-          <th scope="col">{{ $t('product') }}</th>
-          <th scope="col">{{ $t('brand') }}</th>
+          <th v-on:click="sortTable(1)" scope="col">{{ $t('product') }}</th>
+          <th v-on:click="sortTable(2)" scope="col">{{ $t('brand') }}</th>
           <th scope="col">{{ $t('price') }}</th>
-          <th scope="col">{{ $t('quantity') }}</th>
+          <th v-on:click="sortTable(4)" scope="col">{{ $t('quantity') }}</th>
           <th scope="col">{{ $t('quantitySold') }}</th>
           <th scope="col">{{ $t('category') }}</th>
           <th scope="col">{{ $t('options') }}</th>
@@ -290,6 +290,43 @@ export default defineComponent({
             tr[i].style.display = ''
           } else {
             tr[i].style.display = 'none'
+          }
+        }
+      }
+    },
+    sortTable (n) {
+      var table, rows, switching, i, x, y, shouldSwitch, dir
+      var switchcount = 0
+      table = document.getElementById('myTable')
+      switching = true
+      dir = 'asc'
+      while (switching) {
+        switching = false
+        rows = table.rows
+        for (i = 1; i < (rows.length - 1); i++) {
+          shouldSwitch = false
+          x = rows[i].getElementsByTagName('TD')[n]
+          y = rows[i + 1].getElementsByTagName('TD')[n]
+          if (dir === 'asc') {
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              shouldSwitch = true
+              break
+            }
+          } else if (dir === 'desc') {
+            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+              shouldSwitch = true
+              break
+            }
+          }
+        }
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i])
+          switching = true
+          switchcount++
+        } else {
+          if (switchcount === 0 && dir === 'asc') {
+            dir = 'desc'
+            switching = true
           }
         }
       }
