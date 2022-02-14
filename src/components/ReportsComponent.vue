@@ -1,7 +1,8 @@
 <template>
   <div id="reportPage">
     <button class="btn btn-secondary" v-on:click="getValueReport()">Inventory Value</button><br><br>
-    <button class="btn btn-secondary" v-on:click="getBestSellingReport()">Best Selling</button>
+    <button class="btn btn-secondary" v-on:click="getBestSellingReport()">Best Selling</button><br><br>
+    <button class="btn btn-secondary" v-on:click="getWorstSellingReport()">Worst Selling</button>
   </div>
 </template>
 
@@ -27,6 +28,8 @@ export default defineComponent({
       valueReport: [],
       bestSellingReport: [],
       bestSellingProducts: [],
+      worstSellingReport: [],
+      worstSellingProducts: [],
       reportDate: '',
       inventoryValue: ''
     }
@@ -63,11 +66,7 @@ export default defineComponent({
           this.bestSellingReport = res.data
 
           console.log(this.bestSellingReport.productDTOS[0].productName)
-          /*
-          this.bestSellingProducts = this.bestSellingReport.productDTOS
-          console.log(this.bestSellingProducts)
-          console.log(this.bestSellingProducts[0].productName)
-          */
+
           for (let index = 0; index < this.bestSellingReport.productDTOS.length; index++) {
             const row = [
               this.bestSellingReport.productDTOS[index].barCode,
@@ -94,6 +93,42 @@ export default defineComponent({
         })
         .catch(error => {
           console.log('getBestSellingReport() failed')
+          console.log(error)
+        })
+    },
+    getWorstSellingReport () {
+      axios.get('http://localhost:8080/report/worst', this.yourConfig)
+        .then(res => {
+          this.worstSellingReport = res.data
+
+          console.log(this.worstSellingReport.productDTOS[0].productName)
+
+          for (let index = 0; index < this.worstSellingReport.productDTOS.length; index++) {
+            const row = [
+              this.worstSellingReport.productDTOS[index].barCode,
+              this.worstSellingReport.productDTOS[index].productName,
+              this.worstSellingReport.productDTOS[index].brand,
+              this.worstSellingReport.productDTOS[index].quantity,
+              this.worstSellingReport.productDTOS[index].quantitySold
+            ]
+            this.worstSellingProducts.push(row)
+          }
+          console.log(this.worstSellingProducts)
+
+          /* eslint-disable new-cap */
+          const rpt = new jspdf()
+
+          rpt.text('Dépanneur Sainte-Hélène', 10, 10)
+          rpt.text('Best Selling Product: ' + this.worstSellingReport.date, 10, 30)
+          autoTable(rpt, {
+            head: [['Bar Code', 'Product', 'Brand', 'Quantity', 'Quantity Sold']],
+            margin: { top: 50 },
+            body: this.worstSellingProducts
+          })
+          rpt.save('Worst-Selling-Report-' + this.worstSellingReport.date + '.pdf')
+        })
+        .catch(error => {
+          console.log('getWorstSellingReport() failed')
           console.log(error)
         })
     }
