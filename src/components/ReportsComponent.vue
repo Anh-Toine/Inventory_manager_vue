@@ -1,6 +1,7 @@
 <template>
   <div id="reportPage">
-    <button class="btn btn-secondary" v-on:click="getValueReport()">Inventory Value</button>
+    <button class="btn btn-secondary" v-on:click="getValueReport()">Inventory Value</button><br><br>
+    <button class="btn btn-secondary" v-on:click="getBestSellingReport()">Best Selling</button>
   </div>
 </template>
 
@@ -24,6 +25,8 @@ export default defineComponent({
         }
       },
       valueReport: [],
+      bestSellingReport: [],
+      bestSellingProducts: [],
       reportDate: '',
       inventoryValue: ''
     }
@@ -51,6 +54,46 @@ export default defineComponent({
         })
         .catch(error => {
           console.log('getValueReport() failed')
+          console.log(error)
+        })
+    },
+    getBestSellingReport () {
+      axios.get('http://localhost:8080/report/best', this.yourConfig)
+        .then(res => {
+          this.bestSellingReport = res.data
+
+          console.log(this.bestSellingReport.productDTOS[0].productName)
+          /*
+          this.bestSellingProducts = this.bestSellingReport.productDTOS
+          console.log(this.bestSellingProducts)
+          console.log(this.bestSellingProducts[0].productName)
+          */
+          for (let index = 0; index < this.bestSellingReport.productDTOS.length; index++) {
+            const row = [
+              this.bestSellingReport.productDTOS[index].barCode,
+              this.bestSellingReport.productDTOS[index].productName,
+              this.bestSellingReport.productDTOS[index].brand,
+              this.bestSellingReport.productDTOS[index].quantity,
+              this.bestSellingReport.productDTOS[index].quantitySold
+            ]
+            this.bestSellingProducts.push(row)
+          }
+          console.log(this.bestSellingProducts)
+
+          /* eslint-disable new-cap */
+          const rpt = new jspdf()
+
+          rpt.text('Dépanneur Sainte-Hélène', 10, 10)
+          rpt.text('Best Selling Product: ' + this.bestSellingReport.date, 10, 30)
+          autoTable(rpt, {
+            head: [['Bar Code', 'Product', 'Brand', 'Quantity', 'Quantity Sold']],
+            margin: { top: 50 },
+            body: this.bestSellingProducts
+          })
+          rpt.save('Best-Selling-Report-' + this.bestSellingReport.date + '.pdf')
+        })
+        .catch(error => {
+          console.log('getBestSellingReport() failed')
           console.log(error)
         })
     }
