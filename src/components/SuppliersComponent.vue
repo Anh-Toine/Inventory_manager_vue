@@ -76,7 +76,7 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" v-on:click="editRow(supplier)">{{ $t('edit') }}</a></li>
-                <li><a class="dropdown-item" v-on:click="deleteSupplier(supplier.supplierName)">{{ $t('delete') }}</a></li>
+                <li><a class="dropdown-item" v-on:click="deleteSupplier(supplier.supplierId)">{{ $t('delete') }}</a></li>
               </ul>
           </div>
           </td>
@@ -139,6 +139,7 @@ export default defineComponent({
     },
 
     editRow (supplier) {
+      this.supplierId = supplier.supplierId
       this.supplierName = supplier.supplierName
       this.representativeName = supplier.representativeName
       this.email = supplier.email
@@ -168,6 +169,7 @@ export default defineComponent({
     },
     updateSupplier () {
       const updatedSupplier = {
+        supplierId: this.supplierId,
         supplierName: this.supplierName,
         representativeName: this.representativeName,
         email: this.email,
@@ -176,9 +178,9 @@ export default defineComponent({
 
       const updatejson = JSON.stringify(updatedSupplier)
 
-      axios.put('http://localhost:8080/suppliers/' + this.supplierName, updatejson, this.yourConfig)
+      axios.put('http://localhost:8080/suppliers/' + this.supplierId, updatejson, this.yourConfig)
         .then(res => {
-          const storedIndex = this.suppliers.map(s => s.supplierName).indexOf(updatedSupplier.supplierName)
+          const storedIndex = this.suppliers.map(s => s.supplierId).indexOf(updatedSupplier.supplierId)
           this.suppliers.splice(storedIndex, 1, res.data)
           this.closeForm()
         })
