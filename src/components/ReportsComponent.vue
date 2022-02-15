@@ -1,8 +1,8 @@
 <template>
   <div id="reportPage">
-    <button class="btn btn-secondary" v-on:click="getValueReport()">Inventory Value</button><br><br>
-    <button class="btn btn-secondary" v-on:click="getBestSellingReport()">Best Selling</button><br><br>
-    <button class="btn btn-secondary" v-on:click="getWorstSellingReport()">Worst Selling</button>
+    <button class="btn btn-secondary" v-on:click="getValueReport()">{{ $t('inventoryValue') }}</button><br><br>
+    <button class="btn btn-secondary" v-on:click="getBestSellingReport()">{{ $t('bestSelling') }}</button><br><br>
+    <button class="btn btn-secondary" v-on:click="getWorstSellingReport()">{{ $t('worstSelling') }}</button>
   </div>
 </template>
 
@@ -45,9 +45,9 @@ export default defineComponent({
           const rpt = new jspdf()
 
           rpt.text('Dépanneur Sainte-Hélène', 10, 10)
-          rpt.text('Inventory Value', 10, 30)
+          rpt.text(this.$t('inventoryValue'), 10, 30)
           autoTable(rpt, {
-            head: [['Date', 'Total Value']],
+            head: [['Date', this.$t('totalValue')]],
             margin: { top: 50 },
             body: [
               [this.valueReport.date, this.valueReport.value]
@@ -83,9 +83,9 @@ export default defineComponent({
           const rpt = new jspdf()
 
           rpt.text('Dépanneur Sainte-Hélène', 10, 10)
-          rpt.text('Best Selling Product: ' + this.bestSellingReport.date, 10, 30)
+          rpt.text(this.$t('bestSellingProduct') + ': ' + this.bestSellingReport.date, 10, 30)
           autoTable(rpt, {
-            head: [['Bar Code', 'Product', 'Brand', 'Quantity', 'Quantity Sold']],
+            head: [[this.$t('barcode'), this.$t('product'), this.$t('brand'), this.$t('quantity'), this.$t('quantitySold')]],
             margin: { top: 50 },
             body: this.bestSellingProducts
           })
@@ -119,9 +119,9 @@ export default defineComponent({
           const rpt = new jspdf()
 
           rpt.text('Dépanneur Sainte-Hélène', 10, 10)
-          rpt.text('Best Selling Product: ' + this.worstSellingReport.date, 10, 30)
+          rpt.text(this.$t('worstSellingProduct') + ': ' + this.worstSellingReport.date, 10, 30)
           autoTable(rpt, {
-            head: [['Bar Code', 'Product', 'Brand', 'Quantity', 'Quantity Sold']],
+            head: [[this.$t('barcode'), this.$t('product'), this.$t('brand'), this.$t('quantity'), this.$t('quantitySold')]],
             margin: { top: 50 },
             body: this.worstSellingProducts
           })

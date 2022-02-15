@@ -49,5 +49,12 @@
   "order":"Order",
   "orderDate": "Order Date",
   "received":"Received",
-  "payed":"Payed"
+  "payed":"Payed",
+
+  "inventoryValue":"Inventory Value",
+  "totalValue":"Total Value",
+  "bestSelling":"Best Selling",
+  "worstSelling":"Worst Selling",
+  "bestSellingProduct":"Best Selling Product",
+  "worstSellingProduct":"Worst Selling Product"
 }

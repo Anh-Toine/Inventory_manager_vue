@@ -49,5 +49,12 @@
     "order":"Commande",
     "orderDate": "Date de Commande",
     "received":"Reçu",
-    "payed":"Payé"
+    "payed":"Payé",
+
+    "inventoryValue":"Valeur d'Inventaire",
+    "totalValue":"Valeur Totale",
+    "bestSelling":"Meilleur Vente",
+    "worstSelling":"Pire Vente",
+    "bestSellingProduct":"Meilleur Vente de Produit",
+    "worstSellingProduct":"Pire Vente de Produit"
 }
