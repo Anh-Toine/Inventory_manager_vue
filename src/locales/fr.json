@@ -49,5 +49,7 @@
     "order":"Commande",
     "orderDate": "Date de Commande",
     "received":"Reçu",
-    "payed":"Payé"
+    "payed":"Payé",
+
+    "SearchProduct":"Trouver produit"
 }

@@ -1,8 +1,15 @@
 <template>
   <div id="productPage">
+    <div class="container"><div class="row height d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="form">
+              <label for="Search" class="center-block">{{ $t('SearchProduct') }}</label>
+              <input type="text" class="form-control form-input" id="Search" v-on:keyup="myFunction()" placeholder="###">
+           </div>
+        </div>
+    </div>
+    </div>
     <button class="btn btn-secondary" v-on:click="showForm('post')">{{ $t('addProduct') }}</button>
-    <input type="text" class="float-sm-right" id="myInput" v-on:keyup="myFunction()" placeholder="Search for Product by Name"/>
-
     <div class="form-popup p-4" id="popupDiv">
       <form id="addForm" @submit.prevent="confirmForm">
         <div>
@@ -368,5 +375,11 @@ export default defineComponent({
 
 tbody tr:hover {
     background-color: #f5f5f5;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
