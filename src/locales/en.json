@@ -51,6 +51,9 @@
   "received":"Received",
   "payed":"Payed",
 
+
+  "SearchProduct":"Search Product",
+  
   "reports":"Reports",
   "inventoryValue":"Inventory Value",
   "totalValue":"Total Value",

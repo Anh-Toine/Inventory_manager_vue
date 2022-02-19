@@ -51,6 +51,9 @@
     "received":"Reçu",
     "payed":"Payé",
 
+
+    "SearchProduct":"Rechercher un produit",
+
     "reports":"Rapports",
     "inventoryValue":"Valeur d'Inventaire",
     "totalValue":"Valeur Totale",
@@ -58,4 +61,5 @@
     "worstSelling":"Pire Vente",
     "bestSellingProduct":"Meilleur Vente de Produit",
     "worstSellingProduct":"Pire Vente de Produit"
+
 }
