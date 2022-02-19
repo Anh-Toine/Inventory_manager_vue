@@ -51,5 +51,14 @@
   "received":"Received",
   "payed":"Payed",
 
-  "SearchProduct":"Search Product"
+
+  "SearchProduct":"Search Product",
+  
+  "reports":"Reports",
+  "inventoryValue":"Inventory Value",
+  "totalValue":"Total Value",
+  "bestSelling":"Best Selling",
+  "worstSelling":"Worst Selling",
+  "bestSellingProduct":"Best Selling Product",
+  "worstSellingProduct":"Worst Selling Product"
 }
