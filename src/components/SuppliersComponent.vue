@@ -192,10 +192,10 @@ export default defineComponent({
         })
     },
 
-    deleteSupplier (name) {
-      axios.delete('http://localhost:8080/suppliers/' + name, this.yourConfig)
+    deleteSupplier (id) {
+      axios.delete('http://localhost:8080/suppliers/' + id, this.yourConfig)
         .then(res => {
-          const storedIndex = this.suppliers.map(s => s.supplierId).indexOf(name)
+          const storedIndex = this.suppliers.map(s => s.supplierId).indexOf(id)
           this.suppliers.splice(storedIndex, 1)
         })
         .catch(error => {
