@@ -1,7 +1,15 @@
 <template>
   <div id="supplierPage">
+    <div class="container"><div class="row height d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="form">
+              <label for="Search" class="center-block">{{ $t('searchProduct') }}</label>
+              <input type="text" class="form-control form-input" id="myInput" v-on:keyup="myFunction()" placeholder="###">
+           </div>
+        </div>
+    </div>
+    </div>
     <button class="btn btn-secondary" v-on:click="showForm('post')">{{ $t('addSupplier') }}</button>
-
     <div class="form-popup p-4" id="popupDiv">
       <form id="addForm" @submit.prevent="confirmForm">
         <div>
@@ -51,7 +59,7 @@
     <br>
     <br>
 
-    <table class="table table-striped">
+    <table class="table table-striped" id="myTable">
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
@@ -130,7 +138,24 @@ export default defineComponent({
       this.email = ''
       this.telephone = ''
     },
-
+    myFunction () {
+      var input, filter, table, tr, td, i, txtValue
+      input = document.getElementById('myInput')
+      filter = input.value.toUpperCase()
+      table = document.getElementById('myTable')
+      tr = table.getElementsByTagName('tr')
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName('td')[0]
+        if (td) {
+          txtValue = td.textContent || td.innerText
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = ''
+          } else {
+            tr[i].style.display = 'none'
+          }
+        }
+      }
+    },
     confirmForm () {
       if (this.formAction === post) {
         this.addSupplier()
@@ -191,7 +216,6 @@ export default defineComponent({
           alert('Supplier cannot be updated. Reason being: ' + error.response.data.message)
         })
     },
-
     deleteSupplier (id) {
       axios.delete('http://localhost:8080/suppliers/' + id, this.yourConfig)
         .then(res => {
@@ -203,7 +227,6 @@ export default defineComponent({
           console.log(error)
         })
     },
-
     getAllSuppliers () {
       axios.get('http://localhost:8080/suppliers', this.yourConfig)
         .then(res => {

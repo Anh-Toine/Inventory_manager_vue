@@ -1,5 +1,14 @@
 <template>
   <div id="categoryPage">
+    <div class="container"><div class="row height d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="form">
+              <label for="Search" class="center-block">{{ $t('searchProduct') }}</label>
+              <input type="text" class="form-control form-input" id="myInput" v-on:keyup="myFunction()" placeholder="###">
+           </div>
+        </div>
+    </div>
+    </div>
     <button class="btn btn-secondary" v-on:click="showForm('post')">{{ $t('addCategory') }}</button>
     <div class="form-popup p-4" id="popupDiv">
       <form id="addForm" @submit.prevent="confirmForm">
@@ -115,6 +124,24 @@ export default defineComponent({
     }
   },
   methods: {
+    myFunction () {
+      var input, filter, table, tr, td, i, txtValue
+      input = document.getElementById('myInput')
+      filter = input.value.toUpperCase()
+      table = document.getElementById('myTable')
+      tr = table.getElementsByTagName('tr')
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName('td')[0]
+        if (td) {
+          txtValue = td.textContent || td.innerText
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = ''
+          } else {
+            tr[i].style.display = 'none'
+          }
+        }
+      }
+    },
     showForm (action) {
       this.formAction = action
       document.getElementById('popupDiv').style.display = 'block'

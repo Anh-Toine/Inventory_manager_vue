@@ -3,8 +3,8 @@
     <div class="container"><div class="row height d-flex justify-content-center align-items-center">
         <div class="col-md-6">
             <div class="form">
-              <label for="Search" class="center-block">{{ $t('SearchProduct') }}</label>
-              <input type="text" class="form-control form-input" id="Search" v-on:keyup="myFunction()" placeholder="###">
+              <label for="Search" class="center-block">{{ $t('searchProduct') }}</label>
+              <input type="text" class="form-control form-input" id="myInput" v-on:keyup="myFunction()" placeholder="###">
            </div>
         </div>
     </div>
