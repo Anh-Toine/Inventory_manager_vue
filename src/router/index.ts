@@ -23,7 +23,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/orders',
     name: 'OrdersPage',
-    component: Orders
+    component: Orders,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/suppliers',
@@ -36,12 +39,18 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/categories',
     name: 'CategoriesPage',
-    component: Categories
+    component: Categories,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/reports',
     name: 'ReportsPage',
-    component: Reports
+    component: Reports,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/about',
